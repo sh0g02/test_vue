@@ -12,18 +12,29 @@
             <div class="new-todo">
                 <div class="new-todo-item">
                     <label for="new-todo-title">タイトル</label>
-                    <input v-model="todoTitle" type="text" id="new-todo-title"/>
+                    <input v-model.trim="todoTitle" type="text" id="new-todo-title"/>
                 </div>
                 <div class="new-todo-item">
                     <label for="new-todo-description">説明</label>
-                    <textarea v-model="todoDescription" id="new-todo-description"></textarea>
+                    <textarea v-model.trim="todoDescription" id="new-todo-description"></textarea>
                 </div>
             </div>
             <div>
                 <div class="todo-search">
                     <div class="todo-search-item">
+                        <label for="todo-search-done">終了したものを非表示にする
+                            <input v-model="hideDoneTodo" type="checkbox" id="todo-search-done"/>
+                        </label>
+                    </div>
+                    <div class="todo-search-item">
+                        <select v-model="order">
+                            <option value="desc">昇順</option>
+                            <option value="asc">降順</option>
+                        </select>
+                    </div>
+                    <div class="todo-search-item">
                         <label for="todo-search-keyword">キーワードで検索</label>
-                        <input v-model="searchWord" type="text" id="todo-search-keyword"/>
+                        <input v-model.trim="searchWord" type="text" id="todo-search-keyword"/>
                     </div>
                 </div>
             </div>
