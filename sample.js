@@ -1,0 +1,71 @@
+// 1. 関数は、別の関数に引数として渡すことも可能
+const insideFn = logger => {
+  // logger = message => console.log(message)
+  logger('test');
+  // message = 'test'
+};
+insideFn(message => console.log(message));
+
+// 2. 関数の戻り値として、関数を返すことも可能
+// const createScream = function (logger) {
+//   // logger = message => console.log(message)
+//   return function (message) {
+//     logger(message.toUpperCase() + '!!!');
+//   };
+// };
+
+const createScream = logger => message => {
+  // logger = message => console.log(message)
+  logger(message.toUpperCase() + '!!!');
+};
+
+const scream = createScream(message => console.log(message));
+scream('functions can be returned from other functions');
+scream('createScream returns a function');
+scream('scream invokes that returned function');
+
+// 高階関数とは？
+// 1. ある関数が、別の関数を引数として受け取るか
+// 2. もしくは関数を戻り値として返すか
+// ↑どちらかを満たせば、高階関数を名乗れる。
+
+// 命令型プログラミングと宣言的プログラミング
+// 命令型は、howに着目して、コードを書く
+// 宣言型プログラミングは、whatのみを書くので、必然的にコードを見れば何をしたいかが明確になる
+// 宣言型プログラミングの価値は、読みやすいことにあり、その結果スケール出来る
+
+// immutableなデータとは
+// mutateしないこと
+// つまり変更を加えることが出来ない
+// 関数型プログラミングでは、全てのデータはimmutable
+// 関数型では、変更を加えるとき、必ずコピーを作成してから変更する
+
+let color_lawn = {
+  title: 'lawn',
+  color: '#00FF00',
+  rating: 0,
+};
+
+// function rateColor(color, rating) {
+//   color.rating = rating;
+//   return color;
+// }
+
+console.log(rateColor(color_lawn, 5).rating);
+console.log(color_lawn);
+
+// この場合、colorは元のオブジェクトを参照するため、mutateしている。
+
+function rateColor(color, rating) {
+  // colorのコピーを複製
+  return Object.assign({}, color, { rating: rating });
+}
+
+// アロー演算子とスプレッド構文でよりシンプルに出来る
+const rateColorArrow = (color, rating) => ({
+  ...color,
+  rating
+});
+
+console.log(rateColorArrow(color_lawn, 5).rating);
+console.log(color_lawn);

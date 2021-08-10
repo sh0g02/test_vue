@@ -27,7 +27,12 @@ Vue.createApp({
                 return;
             }
             this.todos.push({
-                // id: 'todo-' +
+                id: 'todo-' + Date.now(),
+                title: this.todoTitle,
+                description: this.todoDescription,
+                categories: this.todoCategories,
+                dateTime: Date.now(),
+                done: false,
             });
             this.todoTitle = '';
             this.todoDescription = '';
@@ -37,7 +42,7 @@ Vue.createApp({
             if (!this.canCreateCategory) {
                 return;
             }
-            // TODO
+            this.categories.push(this.categoryName);
             this.categoryName = '';
         },
         existCategory: function () {
