@@ -67,5 +67,52 @@ const rateColorArrow = (color, rating) => ({
   rating
 });
 
-console.log(rateColorArrow(color_lawn, 5).rating);
-console.log(color_lawn);
+// console.log(rateColorArrow(color_lawn, 5).rating);
+// console.log(color_lawn);
+
+// 純粋関数
+// 引数の値のみ参照して、それを元に計算する
+// 少なくとも一つの引数をとり、値もしくは関数を戻り値として返す
+
+const tksk = {
+  name: 'tksk',
+  canRead: false,
+  canWrite: false,
+};
+
+// 純粋関数の例
+const selfEducate = person => ({
+  ...person,
+  canRead: true,
+  canWrite: true,
+});
+
+// console.log(selfEducate(tksk));
+// // tkskは影響を受けない
+// console.log(tksk);
+
+// 関数は少なくとも１つの引数を受け取らないといけない
+// 関数は値もしくは他の関数を戻り値として返さないといけない
+// 関数は、引数や関数外で定義された変数を直接変更してはいけない
+// 純粋関数は引数しか参照しないので、テストが容易になる
+
+// データの変換
+const cities = ['Yokohama', 'Toyama', 'Tokyo',  'Osaka'];
+//
+// const tCities = cities.filter(city => city[0] === 'T');
+// console.log(tCities);
+
+// predicate(述語)を引数にとる。predicateは、配列の要素を引数にとり、真偽値を返すコールバック関数
+// 述語とは、 伝統文法では、ある節の要素のうち、主語でない部分のこと。主語以外の名詞句は述語に含まれる。
+
+// 配列から要素を削除する際には、Array.popや、Array.spliceではなく、filterを使う
+
+// 第一引数に指定された文字列を削除した配列を新しく返す純粋関数
+const cutCities = (cut, list) => list.filter(city => city !== cut);
+// 'Tokyo'を除外
+// console.log(cutCities('Tokyo', cities).join(','));
+// console.log(cities.join('\n'));
+
+const CITIES = cities.map(city => city.toUpperCase());
+console.log(CITIES.join('\n'));
+console.log(cities.join('\n'));
