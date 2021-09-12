@@ -18,6 +18,19 @@
                     <label for="new-todo-description">説明</label>
                     <textarea v-model.trim="todoDescription" id="new-todo-description"></textarea>
                 </div>
+                <div class="new-todo-category">
+                    カテゴリ
+
+                    <form @submit.prevent="createCategory">
+                        <input v-model.trim="categoryName" type="text" />
+                        <button type="submit" :disabled="!canCreateCategory">作成</button>
+                    </form>
+                </div>
+            </div>
+            <div class="new-todo-action">
+                <form id="form-todo" @submit.prevent="createTodo">
+                    <button type="submit" :disabled="!canCreateTodo">作成</button>
+                </form>
             </div>
             <div>
                 <div class="todo-search">

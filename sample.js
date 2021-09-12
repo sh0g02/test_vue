@@ -113,6 +113,7 @@ const cutCities = (cut, list) => list.filter(city => city !== cut);
 // console.log(cutCities('Tokyo', cities).join(','));
 // console.log(cities.join('\n'));
 
+// 1. 配列から配列を得るパターン
 const CITIES = cities.map(city => city.toUpperCase());
 console.log(CITIES.join('\n'));
 console.log(cities.join('\n'));
