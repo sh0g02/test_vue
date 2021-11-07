@@ -9,8 +9,46 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script>
-        const dish = React.createElement("h1", null, 'tksk');
-        ReactDOM.render(dish, document.getElementById("root"));
+        // const dish = React.createElement("h1", null, 'Baked Salmon');
+        // const dessert = React.createElement("h2", null, 'Coconut Cream Pie2');
+        // const list = React.createElement(
+        //   "ul",
+        //   null,
+        //   React.createElement("li", null, "2 lb salmon"),
+        //   React.createElement("li", null, "3 lb salmon"),
+        //   React.createElement("li", null, "4 lb salmon"),
+        //   React.createElement("li", null, "5 lb salmon"),
+        //   React.createElement("li", null, "6 lb salmon"),
+        // );
+        // const items = [
+        //   "2 lb salmon",
+        //   "3 lb salmon",
+        //   "4 lb salmon",
+        //   "5 lb salmon",
+        //   "6 lb salmon",
+        // ];
+        // const list = React.createElement(
+        //   "ul",
+        //   { className: "ingredients" },
+        //   items.map((ingredient, i) => React.createElement("li", { key: i }, ingredient))
+        // );
+        // console.log(list);
+
+        const items = [1, 2, 3, 4, 5, 6];
+
+        function IngredientsList() {
+          return React.createElement(
+            "ul", // DOM要素指定
+            { className: "ingredients" }, // class名指定
+            items.map((ingredient, i) =>
+              React.createElement("li", { key: i }, ingredient),
+            ),
+          );
+        }
+        ReactDOM.render(
+          React.createElement(IngredientsList, { items }, null),
+          document.getElementById("root")
+        );
     </script>
 </body>
 </html>

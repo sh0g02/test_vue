@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO アプリ</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+
+    function Cat({ name }) {
+      return (
+        // Reactでは２つ以上の要素をコンポーネントの戻り値として返すことは出来ない。
+        // React.Fragmentで囲むことでエラー回避出来る。
+        <React.Fragment>
+          <h1>The Cat's name is {name}</h1>
+          <p>He's good</p>
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.render(<Cat name="Jungle" />, document.getElementById('root'));
+</script>
+</body>
+</html>

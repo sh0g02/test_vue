@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO アプリ</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const data = [
+      {
+        name: "Baked Salmon",
+        ingredients: [
+          { name: "材料1", amount: 1, measurement: "cup"},
+          { name: "材料2", amount: 1, measurement: "cup"},
+          { name: "材料3", amount: 1, measurement: "cup"},
+          { name: "材料4", amount: 1, measurement: "cup"},
+          { name: "材料5", amount: 1, measurement: "cup"},
+        ],
+        steps: [
+          "step1",
+          "step2",
+          "step3",
+          "step4",
+          "step5",
+        ],
+      },
+      {
+        name: "Baked Salmon2",
+        ingredients: [
+          { name: "材料1", amount: 1, measurement: "cup"},
+          { name: "材料2", amount: 1, measurement: "cup"},
+          { name: "材料3", amount: 1, measurement: "cup"},
+          { name: "材料4", amount: 1, measurement: "cup"},
+          { name: "材料5", amount: 1, measurement: "cup"},
+        ],
+        steps: [
+          "step1",
+          "step2",
+          "step3",
+          "step4",
+          "step5",
+        ],
+      },
+    ];
+
+    // Recipeコンポーネント
+    function Recipe ({ name, ingredients, steps }) {
+      return (
+        <section id={name.toLowerCase().replace(/ /g, "-")}>
+          <h1>{name}</h1>
+          <ul className="ingredients">
+            {ingredients.map((ingredient, i) => (
+              <li key={i}>{ingredient.name}</li>
+            ))}
+          </ul>
+          <section className="instructions">
+            <h2>Cooking Instructions</h2>
+            {steps.map((step, i) => (
+              <p key={i}>{step}</p>
+            ))}
+          </section>
+        </section>
+      );
+    }
+
+    // article要素を返す関数
+    function Menu ({ title, recipes }) {
+      return (
+        <article>
+          <header>
+            <h1>{title}</h1>
+          </header>
+          <div className="recipes">
+            {recipes.map((recipe, i) => (
+              <Recipe key={i} {...recipe} />
+            ))}
+          </div>
+        </article>
+      );
+    }
+
+
+    ReactDOM.render(
+      <Menu recipes={data} title="Delicious Recipes"/>,
+      document.getElementById('root'),
+    );
+</script>
+</body>
+</html>
